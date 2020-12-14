@@ -3,7 +3,14 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-var strLength = window.prompt("How many characters would you like your password to contain?");
+
+
+// Write password to the #password input
+function writePassword() {
+  
+  var strLength = window.prompt("How many characters would you like your password to contain?");
+
+// Creating functions for all possible password options
 
 // Option 1: lowercase only
 function lowString() {
@@ -13,7 +20,7 @@ function lowString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 
@@ -25,7 +32,7 @@ function lowSpecString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 
@@ -37,7 +44,7 @@ function lowNumString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 3: lowercase, num, spec char
@@ -48,7 +55,7 @@ function lowNumSpecString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 4: uppercase only
@@ -59,9 +66,8 @@ function upperString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
-
 
 // Option 5:  lower & uppercase 
 function lowUpperString() {
@@ -71,9 +77,8 @@ function lowUpperString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
-
 
 // Option 6: uppercase & num
 function upperNumString() {
@@ -83,7 +88,7 @@ function upperNumString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 7: uppercase & spec
@@ -94,7 +99,7 @@ function upperSpecString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 8: uppercase, num, & spec
@@ -105,7 +110,7 @@ function upperNumSpecString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 9: lower, uppercase & spec
@@ -116,7 +121,7 @@ function lowUpperSpecString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 10: uppercase, lower, num, 
@@ -127,7 +132,7 @@ function lowUpperNumString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 // Option 11: all
@@ -138,13 +143,13 @@ function allString() {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
-  alert ("Random Password is " + randomstring);
+  return randomstring;
 }
 
 
 
-// Write password to the #password input
-function writePassword() {
+// Creating logic to call the correct function when specific conditions are selected
+
   if (strLength > 7 && strLength < 129){
     var charSpec= window.confirm("Click OK to confirm using special characters.")
     var charNum= window.confirm("Click OK to confirm using numeric characters.")
@@ -156,52 +161,52 @@ function writePassword() {
 
   // Option 1
     if (charSpec == false && charNum == false && charLow== true && charUp == false){
-      lowString();
+      var password = lowString();
     }
      // Option 2
     else if (charSpec == true && charNum == false && charLow== true && charUp == false){
-      lowSpecString();
+      var password = lowSpecString();
     }
      // Option 3
     else if (charSpec == false && charNum == true && charLow== true && charUp == false){
-      lowNumString();
+      var password = lowNumString();
     }
      // Option 4
     else if (charSpec == true && charNum == true && charLow== true && charUp == false){
-      lowNumSpecString();
+      var password = lowNumSpecString();
     }
      // Option 5
     else if (charSpec == false && charNum == false && charLow== false && charUp == true){
-      upperString();
+      var password = upperString();
     }
      // Option 6
      else if (charSpec == false && charNum == false && charLow== true && charUp == true){
-      lowUpperString();
+      var password = lowUpperString();
     }
      // Option 7
      else if (charSpec == false && charNum == true && charLow== false && charUp == true){
-      upperNumString();
+      var password = upperNumString();
     }
      // Option 8
      else if (charSpec == true && charNum == false && charLow== false && charUp == true){
-      upperSpecString();
+      var password = upperSpecString();
     }
      // Option 9
      else if (charSpec == true && charNum == true && charLow== false && charUp == true){
-      upperNumSpecString();
+      var password = upperNumSpecString();
     }
      // Option 10
      else if (charSpec == true && charNum == false && charLow== true && charUp == true){
-      lowUpperSpecString();
+      var password = lowUpperSpecString();
     }
      // Option 11
      else if (charSpec == false && charNum == true && charLow== true && charUp == true){
-      lowUpperNumString();
+      var password = lowUpperNumString();
     }
 
      // Option 12
      else if (charSpec == true && charNum == true && charLow== true && charUp == true){
-      allString();
+      var password = allString();
     }
     
     // Null
@@ -209,23 +214,19 @@ function writePassword() {
       alert("Please select at least one valid character type");
     }
 
+    else if (charSpec == true && charNum == false && charLow== false && charUp == false){
+      alert("Please select at least one valid character type");
     }
-    
 
+    else if (charSpec == false && charNum == true && charLow== false && charUp == false){
+      alert("Please select at least one valid character type");
+    }
 
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
 
-
-
-
-
-
- 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-
-
-
+    }
+  
 writePassword();
 
 
